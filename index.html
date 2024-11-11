@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Abonnement Premium</title>
+    <script src="https://www.paypal.com/sdk/js?client-id=AT3XI-ElKj1ONpjsbRkI0741aW326oafx_8YqO615iYDO0lV0nx7bA4uAtHRXaxJlftehFfYiL-74N9z&vault=true&intent=subscription"></script>
+</head>
+<body>
+    <h2>Abonnez-vous à la version Premium</h2>
+    <div id="paypal-button-container"></div>
+    <script>
+        paypal.Buttons({
+            style: {
+                shape: 'rect',
+                color: 'gold',
+                layout: 'vertical',
+                label: 'subscribe'
+            },
+            createSubscription: function(data, actions) {
+                return actions.subscription.create({
+                    plan_id: 'P-8CR812842C9469302M4Y727Y'
+                });
+            },
+            onApprove: function(data, actions) {
+                alert("Abonnement réussi ! ID : " + data.subscriptionID);
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html>
